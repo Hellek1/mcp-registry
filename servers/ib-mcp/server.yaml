@@ -1,0 +1,43 @@
+name: ib-mcp
+image: mcp/ib-mcp
+type: server
+meta:
+    category: finance
+    tags:
+        - finance
+about:
+    title: IB MCP
+    description: |
+        MCP server which wraps ib_async to provide access to financial and portfolio data via Interactive Brokers TWS APIs. This allows IBKR customers to use LLMs to analyze their portfolio or get insights on stocks they are interested in.
+        
+        THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+    icon: https://raw.githubusercontent.com/Hellek1/ib-mcp/refs/heads/main/logo.png
+source:
+    project: https://github.com/Hellek1/ib-mcp
+parameters:
+    type: object
+    properties:
+      ib_host:
+        type: string
+        description: Your Interactive Brokers TWS API host
+        example: host.docker.internal
+      ib_port:
+        type: integer
+        description: Your Interactive Brokers TWS API port
+        example: 7497
+      ib_client_id:
+        type: integer
+        description: Your Interactive Brokers TWS API client ID
+        example: 1
+config:
+  description: Configure the connection to Interactive Brokers TWS API
+  env:
+    - name: IB_HOST
+      example: host.docker.internal
+      value: '{{ib-mcp.ib_host}}'
+    - name: IB_PORT
+      example: "7497"
+      value: '{{ib-mcp.ib_port}}'
+    - name: IB_CLIENT_ID
+      example: "1"
+      value: '{{ib-mcp.ib_client_id}}'
